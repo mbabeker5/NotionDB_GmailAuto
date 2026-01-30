@@ -1,0 +1,13 @@
+Hi {name}!
+
+Thanks so much for applying to our Specialized Designer role. We reviewed your portfolio, and really love your Taste!
+
+We agree to the rate you proposed, and as a next and final step, we'd love for you to complete this short assessment: {assessment_link}
+
+If you have any questions, or once you complete the assessment, please reach out to our recruiting lead, Dave Barner, via WhatsApp (+1 716 880 0738).
+
+We'll review your test quickly (we promise!) and if approved, we will move to contracts and onboarding ASAP!
+
+Best,
+Mo, Growth Lead
+

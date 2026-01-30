@@ -19,6 +19,7 @@ load_dotenv()
 NOTION_API_KEY = os.environ["NOTION_API_KEY"]
 NOTION_DATABASE_ID = os.environ["NOTION_DATABASE_ID"]
 ASSESSMENT_LINK = os.environ["ASSESSMENT_LINK"]
+SUBMISSION_PLATFORM_URL = os.environ["SUBMISSION_PLATFORM_URL"]
 GMAIL_SENDER_EMAIL = os.environ["GMAIL_SENDER_EMAIL"]
 POLL_INTERVAL = int(os.environ.get("POLL_INTERVAL_SECONDS", "300"))
 
@@ -34,6 +35,7 @@ CLIENT_SECRET_FILE = os.path.join(
     "client_secret_1006286001114-u7cgkbpt4ounb5p62ln4c1s6cqhqj5dq.apps.googleusercontent.com.json",
 )
 TOKEN_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "token.json")
+TEMPLATE_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "email_template.txt")
 
 
 def get_gmail_service():
@@ -89,12 +91,10 @@ def extract_record(page):
 
 def send_email(service, to_email, name):
     """Send the next-steps email via Gmail API."""
-    body_text = (
-        f"Hi {name},\n\n"
-        f"Thank you for applying to Taste! We'd like to move you to the next step.\n\n"
-        f"Please complete this assessment: {ASSESSMENT_LINK}\n\n"
-        f"Best,\nThe Taste Team"
-    )
+    with open(TEMPLATE_FILE, "r") as f:
+        body_text = f.read()
+
+    body_text = body_text.format(name=name, assessment_link=ASSESSMENT_LINK)
     message = MIMEText(body_text)
     message["to"] = to_email
     message["from"] = GMAIL_SENDER_EMAIL
