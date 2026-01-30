@@ -55,13 +55,13 @@ def get_gmail_service():
 
 
 def query_notion_for_unsent():
-    """Return pages where Progress=Yes and Email Sent is not checked."""
+    """Return pages where Maria's approval=Yes and Email Sent is not checked."""
     url = f"https://api.notion.com/v1/databases/{NOTION_DATABASE_ID}/query"
     payload = {
         "filter": {
             "and": [
                 {
-                    "property": "Progress to next step?",
+                    "property": "Maria's approval?",
                     "select": {"equals": "Yes"},
                 },
                 {
