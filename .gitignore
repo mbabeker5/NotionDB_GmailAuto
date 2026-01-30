@@ -4,7 +4,6 @@ token.json
 client_secret*.json
 __pycache__/
 .DS_Store
-assessment_platform/
 
 # Temporary files
 *.docx
